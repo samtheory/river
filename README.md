@@ -1,7 +1,16 @@
 # river
 
-A new Flutter project.
+A socialMedia For Your Brand.
 
+## Package
+
+[auto_route](https://pub.dev/packages/auto_route) |
+[riverpod](https://riverpod.dev/)  | 
+[objectbox](https://pub.dev/packages/objectbox)  |  
+[adaptive_theme](https://pub.dev/packages/adaptive_theme)  |  
+
+## Figma
+[Figma](https://www.figma.com/file/9hIi8U3Cwtu1ra5YWItWx9/Swey-(Copy)?node-id=0%3A1)
 ## Getting Started
 
 This project is a starting point for a Flutter application.
