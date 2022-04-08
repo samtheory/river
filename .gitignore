@@ -47,4 +47,5 @@ app.*.map.json
 
 
 # flutter build runner Generated file
-*.g.dart
+**.g.dart
+**.gr.dart
