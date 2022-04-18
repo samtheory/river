@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:river/screens/chat_screen.dart';
+import 'package:river/screens/get_started_screen.dart';
 import 'package:river/screens/home_bottom_nav_screen.dart';
 import 'package:river/screens/market_screen.dart';
 import 'package:river/screens/profile_screen.dart';
@@ -9,7 +10,8 @@ import 'package:river/screens/wallet_screen.dart';
 @MaterialAutoRouter(
   replaceInRouteName: 'Screen,Route',
   routes: <AutoRoute>[
-    AutoRoute(path: "/", page: HomeBottomNavigationScreen, children: [
+    AutoRoute(path: "/", page: GetStartedScreen),
+    AutoRoute(path: "/home", page: HomeBottomNavigationScreen, children: [
       AutoRoute(
         name: 'ChatRouter',
         path: 'chat',
