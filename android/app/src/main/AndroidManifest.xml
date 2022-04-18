@@ -1,9 +1,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.river">
+    package="com.samycrip10.river">
    <application
         android:label="river"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+         <activity android:name="com.linusu.flutter_web_auth.CallbackActivity" android:exported="true">
+      <intent-filter android:label="flutter_web_auth">
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="appwrite-callback-[PROJECT_ID]" />
+      </intent-filter>
+    </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"
