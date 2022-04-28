@@ -1,4 +1,5 @@
 import 'package:appwrite/appwrite.dart';
+import 'package:appwrite/models.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -61,7 +62,6 @@ class ProfileScreen extends HookConsumerWidget {
                     database
                         .listDocuments(
                           collectionId: 'alaki001',
-                         
                         )
                         .then((value) => print(value.documents))
                         .catchError((error) => print(error.response));
@@ -73,10 +73,21 @@ class ProfileScreen extends HookConsumerWidget {
                         .createDocument(
                           collectionId: 'alaki001',
                           documentId: 'unique()',
-                          data: {'1000':200,'text':"she lived in paradice"},
+                          data: {'1000': 200, 'text': "she lived in paradice"},
                         )
                         .then((value) => print(value))
                         .catchError((error) => print(error.response));
+                  },
+                  child: Text('Get User')),
+              ElevatedButton(
+                  onPressed: () {
+                   
+
+                    account.get().then((User response) {
+                      print(response.$id);
+                    }).catchError((error) {
+                      print(error.response);
+                    });
                   },
                   child: Text('create Document'))
             ]),

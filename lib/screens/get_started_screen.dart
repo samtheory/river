@@ -1,9 +1,12 @@
 import 'dart:ui';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:river/constants/constant.dart';
 import 'package:river/gen/assets.gen.dart';
+import 'package:river/routes/router.gr.dart';
+import 'package:river/screens/auth/register.dart';
 
 const Color cWhite = Color(0xFFFAFEFE);
 const Color cDark = Color(0xff2B2B2C);
@@ -65,14 +68,42 @@ class GetStartedScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 50, vertical: 10),
-                    child: Column(crossAxisAlignment: CrossAxisAlignment.stretch,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                         GradientButton(
-                          onTap: (){},
-                          gradient:KGradiant.blue ,padding: const EdgeInsets.symmetric(vertical: 25),
-                          child: const Text('Get Started' ,textAlign: TextAlign.center, style: TextStyle(color: cWhite , fontSize: 16),),
-                        ),const SizedBox(height: 20,),
-                        Wrap( runAlignment: WrapAlignment.center, crossAxisAlignment: WrapCrossAlignment.center, alignment: WrapAlignment.center, children: [Text('Already have an account? ') , TextButton(onPressed: (){}, child: Text('Signin'))],)
+                        GradientButton(
+                          onTap: () {
+                       
+                            AutoRouter.of(context).push( RegisterRoute());
+
+                            
+
+
+                          },
+                          gradient: KGradiant.blue,
+                          padding: const EdgeInsets.symmetric(vertical: 25),
+                          child: const Text( 
+                            'Get Started',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: cWhite, fontSize: 16),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Wrap(
+                          runAlignment: WrapAlignment.center,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          alignment: WrapAlignment.center,
+                          children: [
+                            Text('Already have an account? '),
+                            TextButton(onPressed: () {
+                            AutoRouter.of(context)
+                                      .push(const LoginWithEmailAndPassRoute());
+
+                            }, child: Text('Signin'))
+                          ],
+                        )
                       ],
                     ),
                   )
