@@ -30,8 +30,8 @@ class HomeBottomNavigationScreen extends HookWidget {
             unselectedItemColor: Colors.grey[400],
             items: [
               BottomNavigationBarItem(
-                icon: LineIcon.store(),
-                label: 'Market',
+                icon: LineIcon.user(),
+                label: 'Profile',
               ),
               BottomNavigationBarItem(
                 icon: LineIcon.wallet(),
@@ -42,8 +42,8 @@ class HomeBottomNavigationScreen extends HookWidget {
                 label: 'Chat',
               ),
               BottomNavigationBarItem(
-                icon: LineIcon.user(),
-                label: 'Profile',
+                icon: LineIcon.store(),
+                label: 'Market',
               ),
             ]);
       },

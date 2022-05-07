@@ -1,7 +1,11 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icon.dart';
+
+import 'package:river/appwrite/appwrite_client.dart';
+import 'package:river/routes/router.dart';
 import 'package:river/routes/router.gr.dart';
 
 void main() async {
@@ -15,13 +19,8 @@ void main() async {
 class RiverApp extends StatelessWidget {
   final AdaptiveThemeMode? savedThemeMode;
 
-  final _appRouter = AppRouter();
-
-  RiverApp({
-    Key? key,
-    this.savedThemeMode,
-  }) : super(key: key);
-
+  RiverApp({Key? key, this.savedThemeMode}) : super(key: key);
+   final _appRouter = AppRouter(authGuard: AuthGuard(true));
   @override
   Widget build(BuildContext context) {
     return ProviderScope(
@@ -35,17 +34,18 @@ class RiverApp extends StatelessWidget {
         dark: ThemeData(
           brightness: Brightness.dark,
           primarySwatch: Colors.red,
-          colorScheme: const ColorScheme.dark().copyWith(secondary: Colors.amber),
+          colorScheme:
+              const ColorScheme.dark().copyWith(secondary: Colors.amber),
         ),
         initial: AdaptiveThemeMode.system,
-        builder: (theme, darkTheme) => MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          title: 'Adaptive Theme Demo',
-          theme: theme,
-          darkTheme: darkTheme,
-          routerDelegate: _appRouter.delegate(),
-          routeInformationParser: _appRouter.defaultRouteParser(),
-        ),
+        builder: (theme, darkTheme) =>  MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      title: 'Adaptive Theme Demo',
+      theme: theme,
+      darkTheme: darkTheme,
+      routerDelegate: _appRouter.delegate(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
+    ),
       ),
     );
   }

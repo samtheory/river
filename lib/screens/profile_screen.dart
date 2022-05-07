@@ -4,20 +4,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
 import 'package:river/appwrite/appwrite_client.dart';
 import 'package:river/routes/router.gr.dart';
-
-final accountProvider = Provider<Account>((ref) {
-  Client client = ref.watch(appWriteClient);
-  Account account = Account(client);
-  return account;
-});
-
-final databaseProvider = Provider<Database>((ref) {
-  Client client = ref.watch(appWriteClient);
-  Database _db = Database(client);
-  return _db;
-});
 
 class ProfileScreen extends HookConsumerWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -25,6 +14,8 @@ class ProfileScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     Account account = ref.watch(accountProvider);
     Database database = ref.watch(databaseProvider);
+    AppWriteServices _services =
+        AppWriteServices(account: account, db: database);
     final data = useState([]);
     return Scaffold(
       backgroundColor: Colors.lightBlue[200],
@@ -81,17 +72,74 @@ class ProfileScreen extends HookConsumerWidget {
                   child: Text('Get User')),
               ElevatedButton(
                   onPressed: () {
-                   
-
                     account.get().then((User response) {
                       print(response.$id);
                     }).catchError((error) {
                       print(error.response);
                     });
                   },
-                  child: Text('create Document'))
+                  child: Text('create Document')),
+              ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.resolveWith(
+                          (states) => Colors.red)),
+                  onPressed: () {
+                    _services.updateDocument();
+                  },
+                  child: Text('custom Function'))
             ]),
       ),
     );
+  }
+}
+
+class AppWriteServices {
+  Account account;
+  Database db;
+  AppWriteServices({
+    required this.account,
+    required this.db,
+  });
+
+  /// get the userData
+  getAccount() {
+    account
+        .get()
+        .then((User user) => print(user.email))
+        .catchError((e) => print(e));
+  }
+
+  createDocument() {
+    db
+        .createDocument(
+          collectionId: '625d0cba1cc5ff839bf7',
+          documentId: 'unique()',
+          data: {
+            'hi': 'end of the world',
+            'data': 
+              ['ali', 'mamad']
+            
+          },
+        )
+        .then((value) => print(value))
+        .catchError((e) => print(e));
+  }
+  listDocument() {
+    db
+        .listDocuments(
+    collectionId: '625d0cba1cc5ff839bf7',
+  )
+        .then((value) => print(value.documents))
+        .catchError((e) => print(e));
+  }
+  updateDocument() {
+    db
+        .updateDocument(
+        collectionId: '625d0cba1cc5ff839bf7',
+        documentId: '627139dc3ff0ed133738',
+        data: {'bad':'fucked up shit'},
+      )
+        .then((value) => print(value))
+        .catchError((e) => print(e));
   }
 }

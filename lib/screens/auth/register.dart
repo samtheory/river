@@ -1,9 +1,11 @@
 import 'package:appwrite/appwrite.dart';
+import 'package:appwrite/models.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icon.dart';
+import 'package:river/appwrite/appwrite_client.dart';
 import 'package:river/constants/constant.dart';
 import 'package:river/gen/assets.gen.dart';
 import 'package:river/routes/router.gr.dart';
@@ -86,7 +88,14 @@ class RegisterScreen extends HookConsumerWidget {
                         horizontal: 50, vertical: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
+                      children: [ElevatedButton(onPressed: (){
+                        account.get().then((User response) {
+                                  print( response.email);
+                                }).catchError((error) {
+                                  print(error.response);
+                                  
+                                });
+                      }, child: Text('getUser')),
                         GradientButton(
                           onTap: () async {
                             _formKey.currentState?.save();

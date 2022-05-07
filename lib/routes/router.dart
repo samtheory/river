@@ -1,4 +1,9 @@
+import 'package:appwrite/appwrite.dart';
+import 'package:appwrite/models.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:river/appwrite/appwrite_client.dart';
+import 'package:river/routes/router.gr.dart';
 import 'package:river/screens/auth/login_with_email.dart';
 import 'package:river/screens/auth/register.dart';
 import 'package:river/screens/chat_screen.dart';
@@ -12,11 +17,10 @@ import 'package:river/screens/wallet_screen.dart';
 @MaterialAutoRouter(
   replaceInRouteName: 'Screen,Route',
   routes: <AutoRoute>[
-    AutoRoute(path: "/", page: GetStartedScreen),
+    // AutoRoute(path: "/", page: GetStartedScreen),
     AutoRoute(path: "/login", page: LoginWithEmailAndPassScreen),
     AutoRoute(path: "/register", page: RegisterScreen),
-    
-    AutoRoute(path: "/home", page: HomeBottomNavigationScreen, children: [
+    AutoRoute(path: "/", page: HomeBottomNavigationScreen, children: [
       AutoRoute(
         name: 'ChatRouter',
         path: 'chat',
@@ -53,6 +57,8 @@ import 'package:river/screens/wallet_screen.dart';
           RedirectRoute(path: '*', redirectTo: ''),
         ],
       ),
+    ], guards: [
+      AuthGuard
     ]),
     AutoRoute(
       page: SettingsScreen,
@@ -64,3 +70,23 @@ import 'package:river/screens/wallet_screen.dart';
   ],
 )
 class $AppRouter {}
+
+class AuthGuard extends AutoRouteGuard {
+  bool account;
+  AuthGuard(this.account);
+  @override
+  void onNavigation(NavigationResolver resolver, StackRouter router) {
+   
+
+    // the navigation is paused until resolver.next() is called with either
+    // true to resume/continue navigation or false to abort navigation
+    if (account ) {
+      // if user is authenticated we continue
+      resolver.next(true);
+    } else {
+     
+      // we redirect the user to our login page
+      router.push(RegisterRoute()).then((value) => resolver.next(true));
+    }
+  }
+}
