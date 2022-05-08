@@ -8,6 +8,7 @@ import 'package:line_icons/line_icon.dart';
 import 'package:river/appwrite/appwrite_client.dart';
 import 'package:river/constants/constant.dart';
 import 'package:river/gen/assets.gen.dart';
+import 'package:river/main.dart';
 import 'package:river/routes/router.gr.dart';
 import 'package:river/screens/get_started_screen.dart';
 import 'package:river/screens/profile_screen.dart';

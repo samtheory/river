@@ -10,7 +10,7 @@ class HomeBottomNavigationScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _navCurrentIndex = useState(2);
+    final _navCurrentIndex = useState(0);
     return AutoTabsScaffold(
       routes: const [
         ProfileRouter(),
@@ -18,7 +18,7 @@ class HomeBottomNavigationScreen extends HookWidget {
         WalletRouter(),
         MarketRouter(),
       ],
-      homeIndex: 2,
+
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBar(
             onTap: (int index) {

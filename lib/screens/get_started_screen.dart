@@ -1,15 +1,12 @@
-import 'dart:ui';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:river/constants/constant.dart';
 import 'package:river/gen/assets.gen.dart';
+import 'package:river/main.dart';
 import 'package:river/routes/router.gr.dart';
-import 'package:river/screens/auth/register.dart';
 
-const Color cWhite = Color(0xFFFAFEFE);
-const Color cDark = Color(0xff2B2B2C);
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({Key? key}) : super(key: key);
