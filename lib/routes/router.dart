@@ -9,6 +9,7 @@ import 'package:river/screens/auth/register.dart';
 import 'package:river/screens/chat_screen.dart';
 import 'package:river/screens/get_started_screen.dart';
 import 'package:river/screens/home_bottom_nav_screen.dart';
+import 'package:river/screens/image_picker_screen.dart';
 import 'package:river/screens/market_screen.dart';
 import 'package:river/screens/profile_screen.dart';
 import 'package:river/screens/settings_screen.dart';
@@ -20,6 +21,7 @@ import 'package:river/screens/wallet_screen.dart';
     // AutoRoute(path: "/", page: GetStartedScreen),
     AutoRoute(path: "/login", page: LoginWithEmailAndPassScreen),
     AutoRoute(path: "/register", page: RegisterScreen),
+    AutoRoute(path: "/Pick_image", page: ImagePickerScreen),
     AutoRoute(path: "/", page: HomeBottomNavigationScreen, children: [
       AutoRoute(
         name: 'ChatRouter',

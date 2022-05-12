@@ -1,8 +1,10 @@
 import 'package:appwrite/appwrite.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:river/appwrite/appwrite_client.dart';
+import 'package:river/routes/router.gr.dart';
 
 class ProfileScreen extends HookConsumerWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -72,7 +74,11 @@ class ProfileScreen extends HookConsumerWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ElevatedButton(onPressed: () {}, child: Text('new Post')),
+                      ElevatedButton(
+                          onPressed: () {
+                            AutoRouter.of(context).navigate(ImagePickerRoute());
+                          },
+                          child: Text('new Post')),
                       ElevatedButton(onPressed: null, child: Text('new Post')),
                       ElevatedButton(onPressed: null, child: Text('new Post'))
                     ],
