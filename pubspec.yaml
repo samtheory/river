@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.16.2 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
 
 flutter_gen:
   output: lib/gen/ # Optional (default: lib/gen/)
@@ -47,30 +47,29 @@ dependencies:
   cupertino_icons: ^1.0.4
   line_icons: ^2.0.1
   auto_size_text: ^3.0.0
-  adaptive_theme: ^2.3.1
+  adaptive_theme: ^3.0.0
   modal_bottom_sheet: ^2.0.1
   # Logic dependency
-  auto_route: ^3.2.4
-  flutter_hooks: ^0.18.2+1
-  hooks_riverpod: ^1.0.3
-  objectbox: ^1.4.1
-  objectbox_flutter_libs: ^1.4.1
-  json_annotation: ^4.0.1
-  url_launcher: ^6.0.20
+  auto_route: ^4.0.1
+  flutter_hooks: ^0.18.4
+  hooks_riverpod: ^1.0.4
+  objectbox: ^1.5.0
+  objectbox_flutter_libs: ^1.5.0
+  json_annotation: ^4.5.0
   dio: ^4.0.6
-  appwrite: ^4.0.2
-  google_fonts: ^2.3.2
+  appwrite: ^5.0.0
+  google_fonts: ^3.0.1
   flutter_staggered_grid_view: ^0.6.1
-  image_picker: ^0.8.5+1
+  image_picker: ^0.8.5+3
   image_editor: ^1.0.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  analyzer: ^3.4.1
-  build_runner: ^2.1.8
-  json_serializable: ^6.1.5
-  auto_route_generator: ^3.2.3 
-  objectbox_generator: ^1.4.1
+  # analyzer: ^4.1.0
+  build_runner: ^2.1.11
+  json_serializable: ^6.2.0
+  auto_route_generator: ^4.0.0
+  objectbox_generator: ^1.5.0
   flutter_gen_runner: ^4.1.6
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

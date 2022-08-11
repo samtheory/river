@@ -1,6 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';                      
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:river/routes/router.dart';
@@ -16,7 +15,7 @@ void main() async {
   runApp(RiverApp(savedThemeMode: savedThemeMode));
 }
 
-/// My [MaterialApp] + [AdaptiveThem]
+/// My [MaterialApp] + [AdaptiveThem]         
 class RiverApp extends StatelessWidget {
   final AdaptiveThemeMode? savedThemeMode;
 

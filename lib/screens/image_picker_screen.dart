@@ -10,7 +10,7 @@ class ImagePickerScreen extends HookConsumerWidget {
   final ImagePicker _picker = ImagePicker();
 
   final editorOption = editor.ImageEditorOption()
-    ..addOption(editor.ClipOption(x: 0, y: 0, width: 1080, height: 1080));
+    ..addOption(editor.ClipOption(x: 0, y: 0, width: 450, height: 450));
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -45,7 +45,7 @@ class ImagePickerScreen extends HookConsumerWidget {
             Text('${(size.value/1080).floor()} kb'),
             ElevatedButton(
                 onPressed: () async {
-                  editorOption.outputFormat = editor.OutputFormat.jpeg(60);
+                  // editorOption.outputFormat = editor.OutputFormat.jpeg(60);
                   var edited = await editor.ImageEditor.editFileImageAndGetFile(
                       file: File(image.value), imageEditorOption: editorOption);
                   compressed.value = edited?.path ?? '';
